@@ -14,11 +14,12 @@ router.post('/signup', async (req, res) => {
             return res.status(400).send("User already exists");
         }
 
-        bcrypt.hash(password, saltRounds).then(hash => {
-                password = hash;
+        let user;
+        bcrypt.hash(password, saltRounds).then(async hash => {
+                user = await Users.create({ email: email, username: username, password: hash });
             })
             .catch(err => console.error(err.message));
-        const user = await Users.create({ email: email, username: username, password: password });
+        
         const token = await generateToken(user);
 
         res.status(201).cookie("token", token).send(user);

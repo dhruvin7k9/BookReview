@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
         const user = await Users.create({ email: email, username: username, password: password });
         const token = await generateToken(user);
 
-        res.status(200).cookie("token", token).send(user);
+        res.status(201).cookie("token", token).send(user);
     } catch (error) {
         res.status(400).send(error);
     }

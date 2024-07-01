@@ -62,7 +62,7 @@ app.use(cors({
 
 // API routes
 app.use('/auth', userRouter);
-// app.use("/reviews", reviewRouter);
+app.use("/reviews", reviewRouter);
 // app.use("/book", bookRouter);
 
 

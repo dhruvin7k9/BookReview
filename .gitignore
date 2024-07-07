@@ -3,3 +3,4 @@ package-lock.json
 .dockerignore
 .env
 .vscode
+*.txt
